@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JimmyChat Programming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('computer-image-url') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            background-color: rgba(76, 175, 80, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: rgba(221, 221, 221, 0.8); /* Semi-transparent background */
+            color: black;
+        }
+
+        main {
+            padding: 20px;
+            background-color: rgba(240, 240, 240, 0.8); /* Semi-transparent background */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .login-section {
+            background-color: rgba(0, 123, 255, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 20px;
+        }
+
+        .dashboard {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .dashboard h2 {
+            color: #333;
+        }
+
+        .dashboard ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .dashboard ul li {
+            margin: 10px 0;
+        }
+
+        .dashboard ul li a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .dashboard ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+        })();
+
+        function sendVerificationCode(event, formType) {
+            event.preventDefault();
+            const form = event.target;
+            const email = formType === 'signup' ? form.email.value : form.loginUsername.value;
+
+            // Generate a verification code
+            const verificationCode = Math.floor(100000 + Math.random() * 900000);
+
+            // Send the verification code via EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                to_email: email,
+                verification_code: verificationCode
+            })
+            .then(response => {
+                alert('Verification code sent to your email.');
+                // Here you can handle the verification code process (e.g., save it to local storage or database)
+                localStorage.setItem('verificationCode', verificationCode);
+            }, error => {
+                alert('Failed to send verification code. Please try again.');
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to JimmyChat Programming</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#resources">Resources</a>
+        <a href="#languages">Languages</a>
+        <a href="#challenges">Challenges</a>
+        <a href="#tools">Development Tools</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#login">Login</a>
+        <a href="#verification">Verification</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About JimmyChat Programming</h2>
+            <p>JimmyChat Programming is a community for coding enthusiasts. Here, you can learn about various programming languages, explore HTML and CSS tutorials, and enhance your coding skills with resources from W3Schools Learning.</p>
+        </section>
+        <section id="resources">
+            <h2>Programming Resources</h2>
+            <p>Explore a variety of programming resources to boost your skills:</p>
+            <ul>
+                <li><a href="https://www.w3schools.com/html/">HTML Tutorials</a></li>
+                <li><a href="https://www.w3schools.com/css/">CSS Tutorials</a></li>
+                <li><a href="https://www.w3schools.com/js/">JavaScript Tutorials</a></li>
+                <li><a href="https://www.w3schools.com/python/">Python Tutorials</a></li>
+            </ul>
+        </section>
+        <section id="languages">
+            <h2>Programming Languages</h2>
+            <p>Learn about different programming languages and their applications:</p>
+            <ul>
+                <li><a href="https://www.w3schools.com/java/">Java</a></li>
+                <li><a href="https://www.w3schools.com/cs/">C#</a></li>
+                <li><a href="https://www.w3schools.com/cpp/">C++</a></li>
+                <li><a href="https://www.w3schools.com/ruby/">Ruby</a></li>
+            </ul>
+        </section>
+        <section id="challenges">
+            <h2>Coding Challenges</h2>
+            <p>Test your skills with coding challenges and practice problems:</p>
+            <ul>
+                <li><a href="https://www.hackerrank.com/">HackerRank</a></li>
+                <li><a href="https://www.codewars.com/">Codewars</a></li>
+                <li><a href="https://leetcode.com/">LeetCode</a></li>
+                <li><a href="https://www.codechef.com/">CodeChef</a></li>
+            </ul>
+        </section>
+        <section id="tools">
+            <h2>Development Tools</h2>
+            <p>Explore essential tools for development:</p>
+            <ul>
+                <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+                <li><a href="https://www.git-scm.com/">Git</a></li>
+                <li><a href="https://www.docker.com/">Docker</a></li>
+                <li><a href="https://www.postman.com/">Postman</a></li>
+            </ul>
+        </section>
+        <section id="signup">
+            <h2>Sign Up</h2>
+            <div class="form-container">
+                <form id="signupForm" onsubmit="sendVerificationCode(event, 'signup')">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </section>
+        <section id="login" class="login-section">
+            <h2>Login</h2>
+            <div class="form-container">
+                <form id="loginForm" onsubmit="sendVerificationCode(event, 'login')">
+                    <label for="loginUsername">Username:</label>
+                    <input type="text" id="loginUsername" name="username" required>
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </section>
+        <section id="verification">
+[_{{{CITATION{{{_1{](https://github.com/SUNYunZeng/ChordDependencyChart/tree/57d410f4c52d25f50b5b976b81ac12de9cf21f3f/README.md)[_{{{CITATION{{{_2{](https://github.com/buribalazs/smooth-drag-order/tree/7b40d21d076c3e31765f61481f537beaf4c5ec9f/README.md)[_{{{CITATION{{{_3{](https://github.com/chryz-hub/web-dev-resources/tree/5fb1a3bfb3aac6a2dc11f1308006a684408d4835/README.md)[_{{{CITATION{{{_4{](https://github.com/mushlih-almubarak/belajar-php-dasar/tree/76688e4511536632f6ae00586b3442984cf1608a/Sistem%20Login%2FRegister.php)[_{{{CITATION{{{_5{](https://github.com/BIDMCDigitalPsychiatry/LAMP-college-study/tree/f7e1cd6c7647608959bb4bf55c5807db565b93cb/main.py)

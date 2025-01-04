@@ -1,0 +1,23 @@
+<script>
+    function sendVerificationCode(event, formType) {
+        event.preventDefault();
+        const form = event.target;
+        const email = formType === 'signup' ? form.email.value : form.loginUsername.value;
+
+        // Generate a verification code
+        const verificationCode = Math.floor(100000 + Math.random() * 900000);
+
+        // Send the verification code via EmailJS
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            to_email: email,
+            verification_code: verificationCode
+        })
+        .then(response => {
+            alert('Verification code sent to your email.');
+            // Here you can handle the verification code process (e.g., save it to local storage or database)
+            localStorage.setItem('verificationCode', verificationCode);
+        }, error => {
+            alert('Failed to send verification code. Please try again.');
+        });
+    }
+</script>
